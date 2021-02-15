@@ -1,21 +1,15 @@
-# Mikuelixir
+# Plush Miku Bot
+Bot that sends you plush mikus. Praise be.
 
-**TODO: Add description**
+![Gif demonstrating Plush Miku's magnificent features](36f6838305f800781065f302d4781d8d.gif)
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mikuelixir` to your list of dependencies in `mix.exs`:
-
+## Usage
+Feed Miku your bot token by creating a config.exs file in the config folder and make it look like this:
 ```elixir
-def deps do
-  [
-    {:mikuelixir, "~> 0.1.0"}
-  ]
-end
+use Mix.Config
+
+config :mikuelixir,
+  # This will be need to be filled in of course
+  token: "add here"
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mikuelixir](https://hexdocs.pm/mikuelixir).
-
+And run `mix run --no-halt` babey!!!!!
