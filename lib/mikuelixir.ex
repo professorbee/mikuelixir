@@ -1,18 +1,28 @@
 defmodule Mikuelixir do
-  @moduledoc """
-  Documentation for `Mikuelixir`.
-  """
+  use Application
+  alias Alchemy.Client
 
-  @doc """
-  Hello world.
+  defmodule Commands do
+    use Alchemy.Cogs
 
-  ## Examples
+    Cogs.def miku do
+      case HTTPoison.get("https://plushmiku.xyz/api/random") do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+          Cogs.say("https://plushmiku.xyz/" <> Jason.decode!(body)["username"])
+        {:ok, %HTTPoison.Response{status_code: 404}} ->
+          Cogs.say "Not found :("
+        {:error, %HTTPoison.Error{reason: reason}} ->
+          IO.inspect reason
+      end
+    end
+  end
 
-      iex> Mikuelixir.hello()
-      :world
+  @token Application.fetch_env!(:mikuelixir, :token)
 
-  """
-  def hello do
-    :world
+  def start(_type, _args) do
+    run = Client.start(@token)
+    Alchemy.Cogs.set_prefix("%")
+    use Commands
+    run
   end
 end
