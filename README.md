@@ -12,4 +12,4 @@ config :mikuelixir,
   # This will be need to be filled in of course
   token: "add here"
 ```
-And run `mix run --no-halt babey!!!!!`
+And run `mix run --no-halt` babey!!!!!
